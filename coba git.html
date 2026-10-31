@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teduh Stay – Hotel & Penginapan Nyaman</title>
+<meta name="description" content="Kamar bersih, sarapan hangat, dan resepsionis 24 jam. Cek ketersediaan dan pesan langsung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#0F2E2B; --pine-2:#18433E; --mist:#F2F5F3; --white:#fff;
+  --ink:#1A2422; --muted:#5B6B67; --brass:#B2832F; --brass-d:#8F6720; --line:#DCE3E0;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--ink);background:var(--mist);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 1rem 'Instrument Sans',sans-serif;padding:14px 24px;border-radius:10px;background:var(--brass);color:#fff;transition:background .2s}
+.btn:hover{background:var(--brass-d)}
+.btn.ghost{background:transparent;color:var(--pine);border:1.5px solid var(--pine)}
+.btn.ghost:hover{background:var(--pine);color:#fff}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(15,46,43,.96);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;font-weight:600}
+.logo span{color:var(--brass)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:#D5E0DC;font-size:.95rem}
+nav a:hover{color:#fff}
+.nav .btn{padding:10px 18px;font-size:.92rem}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* Hero */
+.hero{background:var(--pine);color:#fff;position:relative;overflow:hidden;padding:72px 0 150px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.7rem);margin-bottom:18px}
+.hero p{color:#BFD0CB;font-size:1.1rem;max-width:46ch;margin-bottom:28px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-cta .rating{color:#D5E0DC;font-size:.95rem}
+.hero-cta .rating b{color:#fff}
+.view{aspect-ratio:4/4.4;border-radius:200px 200px 18px 18px;background:
+  radial-gradient(circle at 70% 22%,#F3D58E 0 9%,transparent 9.5%),
+  linear-gradient(180deg,#2B6A60 0%,#18433E 55%,#0B221F 100%);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.view svg{position:absolute;inset:auto 0 0 0;width:100%}
+
+/* Booking bar */
+.booking{position:relative;margin-top:-84px;z-index:5}
+.book-card{background:#fff;border-radius:var(--r);padding:22px;box-shadow:0 18px 44px rgba(15,46,43,.18);display:grid;grid-template-columns:repeat(3,1fr) auto;gap:16px;align-items:end}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.field input,.field select{width:100%;font:500 1rem 'Instrument Sans',sans-serif;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus{border-color:var(--pine);outline:none}
+.summary{grid-column:1/-1;font-size:.95rem;color:var(--muted);min-height:1.5em}
+.summary b{color:var(--pine)}
+.summary.error{color:#B3261E}
+
+/* Sections */
+section{padding:88px 0}
+.head{max-width:620px;margin-bottom:40px}
+.head h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:10px}
+.head p{color:var(--muted)}
+
+/* Rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.room{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.room .pic{height:190px;position:relative}
+.room:nth-child(1) .pic{background:linear-gradient(135deg,#C9D8D2,#8FB0A6)}
+.room:nth-child(2) .pic{background:linear-gradient(135deg,#D9CBB0,#B2955A)}
+.room:nth-child(3) .pic{background:linear-gradient(135deg,#2B6A60,#0F2E2B)}
+.room .pic svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;opacity:.9}
+.room .tag{position:absolute;top:12px;left:12px;background:#fff;font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:99px}
+.room .body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.room h3{font-size:1.3rem}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 14px;color:var(--muted);font-size:.9rem}
+.room ul li::before{content:"✓ ";color:var(--pine-2);font-weight:700}
+.room .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--line)}
+.price{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:600;color:var(--pine)}
+.price small{font:400 .85rem 'Instrument Sans',sans-serif;color:var(--muted)}
+.room .btn{padding:10px 18px;font-size:.92rem}
+
+/* Facilities */
+.fac{background:#fff}
+.fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.fac-item .ic{width:48px;height:48px;border-radius:12px;background:var(--mist);display:grid;place-items:center;margin-bottom:14px;color:var(--pine)}
+.fac-item h3{font-size:1.1rem;margin-bottom:4px;font-family:'Instrument Sans',sans-serif;font-weight:600}
+.fac-item p{color:var(--muted);font-size:.93rem}
+
+/* Reviews */
+.rev-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.score{background:var(--pine);color:#fff;border-radius:var(--r);padding:36px}
+.score .n{font:500 4.2rem/1 'Fraunces',serif}
+.score p{color:#BFD0CB;margin-top:8px}
+.quotes{display:grid;gap:18px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.quote p{margin-bottom:10px}
+.quote cite{font-style:normal;font-size:.9rem;color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--pine);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:14px}
+.contact p{color:#BFD0CB;margin-bottom:22px}
+.info{display:grid;gap:16px}
+.info div{padding:18px 20px;border:1px solid rgba(255,255,255,.16);border-radius:12px}
+.info b{display:block;font-size:.85rem;color:#D8B56C;margin-bottom:2px}
+footer{background:#0A201E;color:#8FA59F;font-size:.88rem;padding:24px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:90%}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  nav{position:absolute;top:68px;left:0;right:0;background:var(--pine);display:none;padding:12px 4% 20px}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:14px}
+  .menu-btn{display:block}
+  .nav>.btn{display:none}
+  .hero .wrap,.rev-wrap,.contact .wrap{grid-template-columns:1fr}
+  .view{max-height:320px;aspect-ratio:auto;height:300px;border-radius:160px 160px 14px 14px}
+  .book-card{grid-template-columns:1fr 1fr}
+  .book-card .btn{grid-column:1/-1}
+  .rooms{grid-template-columns:1fr}
+  .fac-grid{grid-template-columns:1fr 1fr}
+  section{padding:64px 0}
+}
+@media(max-width:520px){.book-card{grid-template-columns:1fr}.fac-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Teduh<span>.</span>Stay</a>
+    <nav id="nav" aria-label="Menu utama">
+      <ul>
+        <li><a href="#kamar">Kamar</a></li>
+        <li><a href="#fasilitas">Fasilitas</a></li>
+        <li><a href="#ulasan">Ulasan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <a href="#pesan" class="btn">Pesan kamar</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">☰</button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Istirahat yang tenang, tanpa gangguan.</h1>
+      <p>Kamar bersih, kasur empuk, sarapan hangat, dan resepsionis yang siap membantu 24 jam. Pesan langsung tanpa biaya tambahan.</p>
+      <div class="hero-cta">
+        <a href="#kamar" class="btn">Lihat tipe kamar</a>
+        <span class="rating"><b>4,8/5</b> dari 1.240 tamu</span>
+      </div>
+    </div>
+    <div class="view" role="img" aria-label="Ilustrasi pemandangan pegunungan saat senja">
+      <svg viewBox="0 0 400 220" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 140 L70 70 L130 120 L210 45 L300 130 L360 90 L400 120 V220 H0Z" fill="#0F2E2B" opacity=".55"/>
+        <path d="M0 175 L90 120 L170 165 L260 105 L340 160 L400 135 V220 H0Z" fill="#0B221F"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="booking" id="pesan">
+  <div class="wrap">
+    <form class="book-card" id="bookForm" novalidate>
+      <div class="field"><label for="in">Check-in</label><input type="date" id="in" required></div>
+      <div class="field"><label for="out">Check-out</label><input type="date" id="out" required></div>
+      <div class="field"><label for="guest">Tamu</label>
+        <select id="guest">
+          <option value="1">1 tamu</option><option value="2" selected>2 tamu</option>
+          <option value="3">3 tamu</option><option value="4">4 tamu</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">Cek ketersediaan</button>
+      <p class="summary" id="summary" aria-live="polite">Pilih tanggal menginap untuk melihat total harga.</p>
+    </form>
+  </div>
+</div>
+
+<section id="kamar">
+  <div class="wrap">
+    <div class="head">
+      <h2>Pilih kamar yang pas</h2>
+      <p>Semua tipe sudah termasuk Wi-Fi cepat, AC, air panas, dan sarapan untuk dua orang.</p>
+    </div>
+    <div class="rooms">
+      <article class="room" data-name="Standard" data-price="350000">
+        <div class="pic"><span class="tag">Paling hemat</span>
+          <svg viewBox="0 0 96 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 52V14M6 40h84v12M90 40V30a8 8 0 0 0-8-8H46v18"/><circle cx="26" cy="31" r="7"/></svg></div>
+        <div class="body">
+          <h3>Standard</h3>
+          <ul><li>1 kasur queen</li><li>18 m²</li><li>Maks. 2 tamu</li></ul>
+          <div class="foot"><div class="price">Rp350.000<small> /malam</small></div><button class="btn ghost pick" type="button">Pilih</button></div>
+        </div>
+      </article>
+      <article class="room" data-name="Deluxe" data-price="520000">
+        <div class="pic"><span class="tag">Favorit tamu</span>
+          <svg viewBox="0 0 96 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 52V14M6 40h84v12M90 40V30a8 8 0 0 0-8-8H46v18"/><circle cx="26" cy="31" r="7"/></svg></div>
+        <div class="body">
+          <h3>Deluxe</h3>
+          <ul><li>1 kasur king</li><li>26 m²</li><li>Balkon</li><li>Maks. 3 tamu</li></ul>
+          <div class="foot"><div class="price">Rp520.000<small> /malam</small></div><button class="btn ghost pick" type="button">Pilih</button></div>
+        </div>
+      </article>
+      <article class="room" data-name="Family Suite" data-price="780000">
+        <div class="pic"><span class="tag">Untuk keluarga</span>
+          <svg viewBox="0 0 96 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 52V14M6 40h84v12M90 40V30a8 8 0 0 0-8-8H46v18"/><circle cx="26" cy="31" r="7"/></svg></div>
+        <div class="body">
+          <h3>Family Suite</h3>
+          <ul><li>2 kamar tidur</li><li>42 m²</li><li>Ruang tamu</li><li>Maks. 4 tamu</li></ul>
+          <div class="foot"><div class="price">Rp780.000<small> /malam</small></div><button class="btn ghost pick" type="button">Pilih</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="fac" id="fasilitas">
+  <div class="wrap">
+    <div class="head"><h2>Yang Anda dapat selama menginap</h2></div>
+    <div class="fac-grid">
+      <div class="fac-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>Wi-Fi cepat</h3><p>Stabil di kamar dan lobi, cocok untuk kerja jarak jauh.</p></div>
+      <div class="fac-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a3 3 0 0 0 3 3v8M9 3v6M12 3v7a3 3 0 0 1-3 3M18 3c-2 2-3 5-3 8h3v10"/></svg></div><h3>Sarapan harian</h3><p>Menu lokal dan internasional, 06.30–10.00.</p></div>
+      <div class="fac-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-6h-11zM7 17v3M17 17v3M8 11l1-4h6l1 4"/></svg></div><h3>Parkir gratis</h3><p>Area luas dan dijaga petugas selama 24 jam.</p></div>
+      <div class="fac-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Resepsionis 24 jam</h3><p>Check-in kapan saja, termasuk tengah malam.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ulasan">
+  <div class="wrap rev-wrap">
+    <div class="score"><div class="n">4,8</div><p>Rata-rata dari 1.240 ulasan tamu yang menginap tahun ini.</p></div>
+    <div class="quotes">
+      <figure class="quote"><p>Kamarnya bersih dan wangi, staf ramah. Check-in cepat walau kami tiba jam 11 malam.</p><cite>Rina, menginap 2 malam</cite></figure>
+      <figure class="quote"><p>Sarapannya enak dan porsinya pas. Wi-Fi kencang, saya bisa meeting online dari kamar.</p><cite>Dimas, perjalanan dinas</cite></figure>
+      <figure class="quote"><p>Family Suite lega untuk kami berempat. Anak-anak betah, parkir juga mudah.</p><cite>Keluarga Hartono</cite></figure>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <div class="wrap">
+    <div>
+      <h2>Ada pertanyaan sebelum menginap?</h2>
+      <p>Tim kami membalas pesan dalam hitungan menit. Hubungi kami untuk permintaan khusus, rombongan, atau penjemputan.</p>
+      <a class="btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Chat via WhatsApp</a>
+    </div>
+    <div class="info">
+      <div><b>Alamat</b>Jl. Contoh Raya No. 12, Kota Anda</div>
+      <div><b>Telepon</b>+62 812-3456-7890</div>
+      <div><b>Check-in / Check-out</b>14.00 / 12.00</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Teduh Stay. Semua hak dilindungi.</span><span>hello@teduhstay.example</span></div></footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return 'Rp'+n.toLocaleString('id-ID')};
+  var iso=function(d){return d.toISOString().slice(0,10)};
+  var today=new Date(), tomorrow=new Date(Date.now()+864e5);
+  var inEl=$('in'), outEl=$('out'), sum=$('summary'), toastEl=$('toast');
+  var selected=null, timer;
+  inEl.min=iso(today); inEl.value=iso(today);
+  outEl.min=iso(tomorrow); outEl.value=iso(tomorrow);
+  $('yr').textContent=today.getFullYear();
+
+  function toast(msg){
+    toastEl.textContent=msg; toastEl.classList.add('show');
+    clearTimeout(timer); timer=setTimeout(function(){toastEl.classList.remove('show')},3200);
+  }
+  function nights(){
+    var a=new Date(inEl.value), b=new Date(outEl.value);
+    return Math.round((b-a)/864e5);
+  }
+  function update(){
+    var n=nights();
+    sum.className='summary';
+    if(!inEl.value||!outEl.value||isNaN(n)){sum.textContent='Pilih tanggal menginap untuk melihat total harga.';return}
+    if(n<1){sum.className='summary error';sum.textContent='Tanggal check-out harus setelah check-in.';return}
+    if(selected){
+      sum.innerHTML='<b>'+selected.name+'</b> · '+n+' malam · total <b>'+fmt(selected.price*n)+'</b> (belum termasuk pajak)';
+    }else{
+      sum.innerHTML=n+' malam dipilih. Pilih tipe kamar di bawah untuk melihat total.';
+    }
+  }
+  inEl.addEventListener('change',function(){
+    var next=new Date(new Date(inEl.value).getTime()+864e5);
+    outEl.min=iso(next);
+    if(new Date(outEl.value)<=new Date(inEl.value)) outEl.value=iso(next);
+    update();
+  });
+  outEl.addEventListener('change',update);
+
+  document.querySelectorAll('.pick').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var r=btn.closest('.room');
+      selected={name:r.dataset.name,price:+r.dataset.price};
+      document.querySelectorAll('.pick').forEach(function(b){b.textContent='Pilih'});
+      btn.textContent='Terpilih ✓';
+      update();
+      $('pesan').scrollIntoView({behavior:'smooth',block:'center'});
+      toast('Kamar '+selected.name+' dipilih. Lanjutkan dengan "Cek ketersediaan".');
+    });
+  });
+
+  $('bookForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=nights();
+    if(isNaN(n)||n<1){update();inEl.focus();return}
+    if(!selected){toast('Pilih tipe kamar dulu di bagian "Pilih kamar yang pas".');$('kamar').scrollIntoView({behavior:'smooth'});return}
+    var msg='Halo Teduh Stay, saya ingin memesan kamar '+selected.name+' untuk '+$('guest').value+' tamu, check-in '+inEl.value+', check-out '+outEl.value+' ('+n+' malam).';
+    window.open('https://wa.me/6281234567890?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+
+  var mb=$('menuBtn'), nav=$('nav');
+  mb.addEventListener('click',function(){
+    var o=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o);
+  });
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+  update();
+})();
+</script>
+</body>
+</html>
